@@ -20,6 +20,7 @@ import java.sql.SQLException;
 @MappedTypes(Integer[].class)
 @MappedJdbcTypes(JdbcType.VARCHAR)
 public class IntegerArrayTypeHandler implements TypeHandler<Integer[]> {
+    //is AutoWired ok?
     @Autowired
     ObjectMapper objectMapper;
 
