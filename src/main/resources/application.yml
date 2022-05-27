@@ -11,3 +11,10 @@ server:
 # notice: not pagehelper.dialect!
 pagehelper:
   helper-dialect: mysql
+
+logging:
+  level:
+    com.hanxiao.spring_mall.mapper: debug
+
+mybatis:
+  type-handlers-package: com.hanxiao.spring_mall.typehandler

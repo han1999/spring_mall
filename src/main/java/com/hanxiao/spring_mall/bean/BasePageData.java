@@ -12,21 +12,21 @@ import java.util.List;
  **/
 
 @Data
-public class BasePageData {
+public class BasePageData<T> {
    private Integer total;
    private Integer pages;
    private Integer limit;
    private Integer page;
-   private List<User> list;
+   private List<T> list;
 
-   public static BasePageData ok(List<User> users) {
-      PageInfo<User> userPageInfo = new PageInfo<>(users);
+   public static <T> BasePageData ok(List<T> list) {
+      PageInfo<T> PageInfo = new PageInfo<>(list);
       BasePageData basePageData = new BasePageData();
-      basePageData.setTotal((int) userPageInfo.getTotal());
-      basePageData.setPages(userPageInfo.getPages());
-      basePageData.setPage(userPageInfo.getPageNum());
-      basePageData.setList(users);
-      basePageData.setLimit(userPageInfo.getPageSize());
+      basePageData.setTotal((int) PageInfo.getTotal());
+      basePageData.setPages(PageInfo.getPages());
+      basePageData.setPage(PageInfo.getPageNum());
+      basePageData.setList(list);
+      basePageData.setLimit(PageInfo.getPageSize());
       return basePageData;
    }
 }
