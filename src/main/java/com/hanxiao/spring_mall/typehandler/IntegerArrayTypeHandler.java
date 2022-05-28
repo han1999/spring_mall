@@ -4,8 +4,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.ibatis.type.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.MappedJdbcTypes;
+import org.apache.ibatis.type.MappedTypes;
+import org.apache.ibatis.type.TypeHandler;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
@@ -20,9 +22,9 @@ import java.sql.SQLException;
 @MappedTypes(Integer[].class)
 @MappedJdbcTypes(JdbcType.VARCHAR)
 public class IntegerArrayTypeHandler implements TypeHandler<Integer[]> {
-    //is AutoWired ok?
-    @Autowired
-    ObjectMapper objectMapper;
+    //is AutoWired ok?  no!
+//    @Autowired
+    ObjectMapper objectMapper=new ObjectMapper();
 
     @SneakyThrows
     @Override
