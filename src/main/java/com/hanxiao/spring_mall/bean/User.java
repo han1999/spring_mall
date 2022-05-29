@@ -11,6 +11,7 @@ public class User {
 
     private Byte gender;
 
+//    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     private Date lastLoginTime;
