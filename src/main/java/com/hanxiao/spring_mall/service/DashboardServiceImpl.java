@@ -29,6 +29,7 @@ public class DashboardServiceImpl implements DashboardService {
 
     public DashboardData dashboard() {
         DashboardData dashboardData = new DashboardData();
+        //if _parameter==null, then count(*) (no conditions)
         Integer goodsTotal = Math.toIntExact(goodsMapper.countByExample(null));
         dashboardData.setGoodsTotal(goodsTotal);
         Integer orderTotal = Math.toIntExact(orderMapper.countByExample(null));

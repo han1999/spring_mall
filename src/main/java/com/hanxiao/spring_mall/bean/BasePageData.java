@@ -21,7 +21,8 @@ public class BasePageData<T> {
 
    public static <T> BasePageData ok(List<T> list) {
       PageInfo<T> PageInfo = new PageInfo<>(list);
-      BasePageData basePageData = new BasePageData();
+      BasePageData<T> basePageData = new BasePageData();//这里不需要用泛型来定义吗？不用竟然也可以
+      //但是规范起见，还是用泛型比较好
       basePageData.setTotal((int) PageInfo.getTotal());
       basePageData.setPages(PageInfo.getPages());
       basePageData.setPage(PageInfo.getPageNum());
