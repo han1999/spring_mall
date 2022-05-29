@@ -32,7 +32,8 @@ public class ShiroConfig {
         shiroFilter.setSecurityManager(securityManager);
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         filterChainDefinitionMap.put("/admin/auth/login", "anon");
-        filterChainDefinitionMap.put("/**", "authc");
+        //to make dev convenient, we let all request urls anon
+//        filterChainDefinitionMap.put("/**", "authc");
         shiroFilter.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilter;
 

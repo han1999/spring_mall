@@ -1,4 +1,4 @@
-package com.hanxiao.spring_mall.bean;
+package com.hanxiao.spring_mall.bean.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

@@ -1,9 +1,9 @@
 package com.hanxiao.spring_mall.controller;
 
-import com.hanxiao.spring_mall.bean.BaseRespVo;
-import com.hanxiao.spring_mall.bean.DataInAuthRespVo;
+import com.hanxiao.spring_mall.bean.vo.BaseRespVo;
+import com.hanxiao.spring_mall.bean.vo.DataInAuthRespVo;
 import com.hanxiao.spring_mall.bean.InfoBean;
-import com.hanxiao.spring_mall.bean.LoginUserBo;
+import com.hanxiao.spring_mall.bean.bo.LoginUserBo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
@@ -21,6 +21,7 @@ import java.util.ArrayList;
  * @date: 2022/5/15
  **/
 @RestController
+@RequestMapping("admin/auth")
 public class AuthController {
 
 //    @RequestMapping("admin/auth/login")
@@ -34,7 +35,7 @@ public class AuthController {
 //        return BaseRespVo.ok(dataInAuthRespVo);
 //    }
 
-    @RequestMapping("admin/auth/info")
+    @RequestMapping("info")
     public BaseRespVo info(String token) {
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
@@ -53,7 +54,7 @@ public class AuthController {
         return BaseRespVo.ok(infoBean);
     }
 
-    @RequestMapping("admin/auth/login")
+    @RequestMapping("login")
     public BaseRespVo login(@RequestBody LoginUserBo loginUser) {
         Subject subject = SecurityUtils.getSubject();
         String username = loginUser.getUsername();

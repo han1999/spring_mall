@@ -3,7 +3,7 @@ package com.hanxiao.spring_mall.controller;
 import com.hanxiao.spring_mall.bean.Admin;
 import com.hanxiao.spring_mall.bean.BasePageData;
 import com.hanxiao.spring_mall.bean.BaseParam;
-import com.hanxiao.spring_mall.bean.BaseRespVo;
+import com.hanxiao.spring_mall.bean.vo.BaseRespVo;
 import com.hanxiao.spring_mall.service.AdminService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
