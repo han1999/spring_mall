@@ -6,11 +6,13 @@ import com.hanxiao.spring_mall.bean.InfoBean;
 import com.hanxiao.spring_mall.bean.LoginUserBo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -34,6 +36,11 @@ public class AuthController {
 
     @RequestMapping("admin/auth/info")
     public BaseRespVo info(String token) {
+        Subject subject = SecurityUtils.getSubject();
+        Session session = subject.getSession();
+        Serializable id = session.getId();
+        System.out.println("info请求的sessionId = " + id);
+
         InfoBean infoBean = new InfoBean();
         infoBean.setAvatar("https://cdn.yaoruanwen.com/wp-content/uploads/2021/07/2021071760215223817.jpg");
         infoBean.setName("admin123");
@@ -59,7 +66,7 @@ public class AuthController {
 
         DataInAuthRespVo dataInAuthRespVo = new DataInAuthRespVo();
         dataInAuthRespVo.setToken((String) subject.getSession().getId());
-        System.out.println("subject.getSession().getId() = " + subject.getSession().getId());
+        System.out.println("login请求：subject.getSession().getId() = " + subject.getSession().getId());
 
         DataInAuthRespVo.AdminInfoDTO adminInfoDTO = new DataInAuthRespVo.AdminInfoDTO();
         adminInfoDTO.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");

@@ -1,6 +1,7 @@
 package com.hanxiao.spring_mall.config;
 
 import com.hanxiao.spring_mall.shiro.CustomRealm;
+import com.hanxiao.spring_mall.shiro.CustomWebSessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
@@ -16,9 +17,10 @@ import java.util.LinkedHashMap;
 @Configuration
 public class ShiroConfig {
     @Bean
-    public DefaultWebSecurityManager securityManager(CustomRealm realm) {
+    public DefaultWebSecurityManager securityManager(CustomRealm realm, CustomWebSessionManager webSessionManager) {
         DefaultWebSecurityManager defaultWebSecurityManager = new DefaultWebSecurityManager();
         defaultWebSecurityManager.setRealm(realm);
+        defaultWebSecurityManager.setSessionManager(webSessionManager);
         return defaultWebSecurityManager;
     }
 
