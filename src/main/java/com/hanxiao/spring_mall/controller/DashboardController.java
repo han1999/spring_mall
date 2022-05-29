@@ -18,6 +18,7 @@ public class DashboardController {
     @Autowired
     DashboardService dashboardService;
 
+    //no value, mapping url= admin/dashboard, the way below is allowed
     @RequestMapping()
     public BaseRespVo dashboard() {
         DashboardData data = dashboardService.dashboard();
