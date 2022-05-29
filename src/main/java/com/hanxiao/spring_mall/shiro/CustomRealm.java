@@ -5,11 +5,13 @@ import com.hanxiao.spring_mall.bean.AdminExample;
 import com.hanxiao.spring_mall.mapper.AdminMapper;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,6 +44,19 @@ public class CustomRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        return null;
+        Admin primaryPrincipal = (Admin) principals.getPrimaryPrincipal();
+        Integer id = primaryPrincipal.getId();
+
+        List<String> permissions = queryFromDb(id);
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+        simpleAuthorizationInfo.addStringPermissions(permissions);
+        return simpleAuthorizationInfo;
+    }
+
+    private List<String> queryFromDb(Integer id) {
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("admin:user:list");
+        strings.add("hanxiao:user");
+        return strings;
     }
 }
